@@ -3,13 +3,14 @@ package com.example.excercise1.data
 import android.os.Parcel
 import android.os.Parcelable
 
-class AttractionInformation(val attractionId : Int, val name: String, val latitude : Double, val longitude : Double, val attractionType: AttractionType) : Parcelable {
+class AttractionInformation(val attractionId : Int, val name: String, val latitude : Double, val longitude : Double, val locationType: LocationType, val imgResID : Int) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString().toString(),
         parcel.readDouble(),
         parcel.readDouble(),
-        AttractionType.valueOf(parcel.readString().toString())
+        LocationType.valueOf(parcel.readString().toString()),
+        parcel.readInt()
     ) {
     }
 
@@ -21,8 +22,9 @@ class AttractionInformation(val attractionId : Int, val name: String, val latitu
         dest.writeDouble(latitude)
         dest.writeDouble(longitude)
         dest.writeString(name)
-        dest.writeString(attractionType.name)
+        dest.writeString(locationType.name)
         dest.writeInt(attractionId)
+        dest.writeInt(imgResID)
     }
 
     companion object CREATOR : Parcelable.Creator<AttractionInformation> {

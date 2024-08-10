@@ -7,7 +7,7 @@ import android.view.View.OnClickListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.excercise1.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), OnClickListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -15,12 +15,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.buttonMainEnter.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View?) {
-        val intent = Intent(this, HomeTypesActivity::class.java)
-        startActivity(intent)
     }
 
 }

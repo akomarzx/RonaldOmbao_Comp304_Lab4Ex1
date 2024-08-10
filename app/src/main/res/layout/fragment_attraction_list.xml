@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".fragment.HouseListFragment"
-    tools:listitem="@layout/fragment_house_list_item" />
+    tools:context=".fragment.AttractionListFragment"
+    tools:listitem="@layout/fragment_attraction_list_item" />

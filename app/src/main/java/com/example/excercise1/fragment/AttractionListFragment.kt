@@ -1,5 +1,6 @@
 package com.example.excercise1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,14 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.excercise1.R
+import com.example.excercise1.activity.AttractionListActivity
+import com.example.excercise1.activity.MapsActivity
 import com.example.excercise1.data.AttractionDataSource
-import com.example.excercise1.data.AttractionType
+import com.example.excercise1.data.AttractionInformation
+import com.example.excercise1.data.AttractionTypeInformation
+import com.example.excercise1.data.LocationType
 
 /**
  * A fragment representing a list of Items.
  */
-class HouseListFragment : Fragment() {
+class AttractionListFragment : Fragment() {
 
     private var columnCount = 1
 
@@ -31,9 +37,9 @@ class HouseListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_house_list_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_attraction_list, container, false)
 
-        val houseTypeStr = arguments?.getString("type")
+        val attractionTypeStr = arguments?.getString("type")
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -42,11 +48,17 @@ class HouseListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                val type : AttractionType? = houseTypeStr?.let { AttractionType.valueOf(it) }
+                val type : LocationType? = attractionTypeStr?.let { LocationType.valueOf(it) }
                 adapter = activity?.let {
-                    MyHouseItemRecyclerViewAdapter(AttractionDataSource.getHouseByType(type),
-                        it
-                    )
+                    AttractionItemRecyclerViewAdapter(AttractionDataSource.getAttractionByType(type), it, object : AttractionItemRecyclerViewAdapter.OnItemClickListener {
+                        override fun onItemClick(item: AttractionInformation) {
+                            val intent = Intent(requireContext(), MapsActivity::class.java)
+                            intent.putExtra("longitude", item.longitude) // Replace with actual longitude
+                            intent.putExtra("latitude", item.latitude)
+                            intent.putExtra("name", item.name)
+                            startActivity(intent)
+                        }
+                    })
                 }
             }
         }
@@ -61,7 +73,7 @@ class HouseListFragment : Fragment() {
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            HouseListFragment().apply {
+            AttractionListFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }

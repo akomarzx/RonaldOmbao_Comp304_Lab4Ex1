@@ -7,12 +7,6 @@
     android:padding="8dp">
 
     <!-- Checkbox -->
-    <CheckBox
-        android:id="@+id/checkbox_selected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:paddingEnd="8dp"/>
 
     <!-- Image -->
     <ImageView
@@ -33,12 +27,5 @@
         android:ellipsize="end"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin condimentum sollicitudin nisl, id accumsan magna semper ut."
         android:textSize="16sp"/>
-
-    <TextView
-        android:id="@+id/text_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"/>
 
 </LinearLayout>

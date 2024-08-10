@@ -5,11 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".activity.HomeTypesActivity">
+    tools:context=".activity.AttractionListActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/materialToolbar_home_menu"
+        android:id="@+id/materialToolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -21,30 +20,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:title="@string/home_selections_title"
-        app:titleTextColor="@color/white" />
+        app:title="@string/landmarks_in_toronto"
+        app:titleCentered="true"
+        app:titleTextColor="#FFFFFF" />
 
-    <RadioGroup
-        android:id="@+id/radio_group_selected"
-        android:layout_width="409dp"
-        android:layout_height="482dp"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/maps_fragmentContainerView"
+        android:name="com.example.excercise1.fragment.AttractionListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="557dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar_home_menu"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button_proceed_checkout"
-        android:layout_width="224dp"
-        android:layout_height="54dp"
-        android:text="@string/proceed_to_checkout_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radio_group_selected"
-        app:layout_constraintVertical_bias="0.58" />
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar2"
+        app:layout_constraintVertical_bias="0.127"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
